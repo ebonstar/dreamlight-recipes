@@ -106,23 +106,24 @@ export const ANY_OF_TYPE = [
   "Any Dairy or Oil",
   "Any Fish",
   "Any Seafood",
-  "Any Shellfish",
   "Any Spice",
   "Any Sweet",
   "Any Ice",
 ] as const;
 
-export type Ingredient =
-  | Vegetable
-  | Fruit
-  | Grain
-  | DairyOil
-  | Fish
-  | Seafood
-  | SpiceHerb
-  | Sweet
-  | Ice
-  | AnyOfType;
+export type Ingredient = typeof ALL_INGREDIENTS[number];
+export const ALL_INGREDIENTS = [
+  ...VEGETABLES,
+  ...FRUIT,
+  ...GRAINS,
+  ...DAIRY_OIL,
+  ...FISH,
+  ...SEAFOOD,
+  ...SPICES_HERBS,
+  ...SWEETS,
+  ...ICE,
+  ...ANY_OF_TYPE,
+] as const;
 
 export type IngredientData = {
   location: GameLocation[];
