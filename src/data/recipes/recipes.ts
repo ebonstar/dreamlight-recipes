@@ -3,9 +3,11 @@ import { Ingredient } from "../ingredients";
 export type Recipe = {
   name: string;
   type: typeof RECIPE_TYPE[number];
-  stars: 1 | 2 | 3 | 4 | 5;
+  stars: RecipeStars;
   ingredients: Ingredient[];
 };
+
+export type RecipeStars = 1 | 2 | 3 | 4 | 5;
 
 export const RECIPE_TYPE = ["Appetizer", "Entrée", "Dessert"] as const;
 
