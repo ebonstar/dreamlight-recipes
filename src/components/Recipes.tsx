@@ -1,5 +1,6 @@
 import { Box, Text } from "grommet";
 import { RECIPES } from "../data/recipes";
+import { SmallTag } from "./Tag";
 import { Stars } from "./Stars";
 
 function Recipes() {
@@ -7,7 +8,10 @@ function Recipes() {
     <Box>
       {RECIPES.map((recipe) => (
         <Box margin="xsmall" pad="xsmall" background="light" round="xsmall">
-          <Text weight="bold">{recipe.name}</Text>
+          <Box direction="row" gap="small">
+            <Text weight="bold">{recipe.name}</Text>
+            <SmallTag value={recipe.type} />
+          </Box>
           <Stars number={recipe.stars} />
           <Box direction="row">
             {recipe.ingredients.map((ingredient) => (

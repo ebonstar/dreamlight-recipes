@@ -17,4 +17,7 @@ export const theme: ThemeType = {
       height: "20px",
     },
   },
+  tag: {
+    round: "xsmall",
+  },
 };
