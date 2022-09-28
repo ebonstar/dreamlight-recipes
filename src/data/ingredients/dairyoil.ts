@@ -5,7 +5,7 @@ export const DAIRY_OIL_DATA: Record<DairyOil, IngredientData> = {
   Canola: { location: ["Forest of Valor"] },
   Cheese: { location: ["Chez Remy"] },
   Egg: { location: ["Chez Remy"] },
-  Milk: { location: ["Forest of Valor"] },
+  Milk: { location: ["Chez Remy"] },
   Peanut: { location: ["Chez Remy"] },
   Soya: { location: ["Sunlit Plateau"] },
 };
