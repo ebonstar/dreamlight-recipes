@@ -1,10 +1,6 @@
 import { Box, Button, Text } from "grommet";
 import { Recipe, RECIPES } from "../data/recipes";
-import {
-  ALL_INGREDIENTS,
-  ALL_INGREDIENT_DATA,
-  Ingredient,
-} from "../data/ingredients";
+import { ALL_INGREDIENT_DATA, Ingredient } from "../data/ingredients";
 import { GameLocation, GAME_LOCATIONS } from "../data/locations";
 import { useEffect, useState } from "react";
 import {
@@ -12,87 +8,54 @@ import {
   ColumnFiltersState,
   getCoreRowModel,
   getFilteredRowModel,
+  Row,
   useReactTable,
 } from "@tanstack/react-table";
 import { Stars } from "./Stars";
 import { SmallTag } from "./Tag";
 
-type RecipeRow = Omit<Recipe, "ingredients"> & {
-  ingredient1: Ingredient;
-  ingredient2?: Ingredient;
-  ingredient3?: Ingredient;
-  ingredient4?: Ingredient;
-  ingredient5?: Ingredient;
-};
+const columns: ColumnDef<Recipe, any>[] = [
+  { accessorKey: "name" },
+  { accessorKey: "type" },
+  { accessorKey: "stars" },
+  {
+    accessorKey: "ingredients",
+    filterFn: (row, _, missingIngredients) => {
+      if (row.original.ingredients.some((i) => missingIngredients.includes(i)))
+        return false;
+      return true;
+    },
+  },
+];
 
-const columnKeys = [
-  "name",
-  "type",
-  "stars",
-  "ingredient1",
-  "ingredient2",
-  "ingredient3",
-  "ingredient4",
-  "ingredient5",
-] as const;
-
-const columns: ColumnDef<RecipeRow, any>[] = columnKeys.map((key) => ({
-  id: key,
-  accessorKey: key,
-  filterFn: "includesString",
-}));
-
-const data: RecipeRow[] = RECIPES.map((recipe) => {
-  const { ingredients, ...rest } = recipe;
-
-  const [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5] =
-    ingredients;
-
-  return {
-    ...rest,
-    ingredient1,
-    ingredient2,
-    ingredient3,
-    ingredient4,
-    ingredient5,
-  };
-});
+const data: Recipe[] = RECIPES;
 
 function Recipes() {
   const [locations, setLocations] = useState<GameLocation[]>([
     ...GAME_LOCATIONS,
   ]);
-  const [available, setAvailable] = useState<Ingredient[]>([
-    ...ALL_INGREDIENTS,
-  ]);
-
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
-  // update available ingredients list when available locations change
+  // update available recipes when selected locations change
   useEffect(() => {
-    if (locations.length === GAME_LOCATIONS.length) {
-      setAvailable([...ALL_INGREDIENTS]);
-      return;
+    const missingIngredients: Ingredient[] = [];
+    if (locations.length < GAME_LOCATIONS.length) {
+      for (const [ingredient, data] of Object.entries(ALL_INGREDIENT_DATA)) {
+        if (!data.location.some((location) => locations.includes(location)))
+          missingIngredients.push(ingredient as Ingredient);
+      }
     }
-    const newAvailable: Ingredient[] = [];
-    for (const [ingredient, data] of Object.entries(ALL_INGREDIENT_DATA)) {
-      if (data.location.some((location) => locations.includes(location)))
-        newAvailable.push(ingredient as Ingredient);
-    }
-    setAvailable(newAvailable);
+    setColumnFilters([{ id: "ingredients", value: missingIngredients }]);
   }, [locations]);
 
   const toggleLocation = (location: GameLocation) => {
     const newLocations = locations.includes(location)
       ? locations.filter((l) => l !== location)
       : [...locations, location];
-
-    console.log(newLocations);
-
     setLocations(newLocations);
   };
 
-  const table = useReactTable<RecipeRow>({
+  const table = useReactTable<Recipe>({
     data,
     columns,
     state: {
@@ -108,6 +71,7 @@ function Recipes() {
       <Box direction="row" wrap>
         {GAME_LOCATIONS.map((location) => (
           <Button
+            key={location}
             label={location}
             onClick={() => toggleLocation(location)}
             size="small"
@@ -118,13 +82,6 @@ function Recipes() {
       </Box>
       {table.getRowModel().rows.map((row) => {
         const { original: recipe } = row;
-        const ingredients = [
-          recipe.ingredient1,
-          recipe.ingredient2,
-          recipe.ingredient3,
-          recipe.ingredient4,
-          recipe.ingredient5,
-        ].filter(Boolean) as Ingredient[];
         return (
           <Box
             key={row.id}
@@ -139,14 +96,13 @@ function Recipes() {
             </Box>
             <Stars number={recipe.stars} />
             <Box direction="row" margin={{ top: "xsmall" }}>
-              {ingredients.map((ingredient, i) => (
+              {recipe.ingredients.map((ingredient, i) => (
                 <Button
                   key={i}
                   label={ingredient}
                   size="small"
                   primary
                   margin={{ right: "xsmall" }}
-                  disabled={!available.includes(ingredient)}
                 />
               ))}
             </Box>
