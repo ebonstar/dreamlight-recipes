@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-table": "^8.5.13",
     "grommet": "^2.26.0",
     "grommet-icons": "^4.8.0",
     "react": "^18.2.0",

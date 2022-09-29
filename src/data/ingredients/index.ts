@@ -9,6 +9,8 @@ import { SWEETS_DATA } from "./sweets";
 
 export type { Ingredient, IngredientData } from "./ingredients";
 
+export { ALL_INGREDIENTS } from "./ingredients";
+
 export const ALL_INGREDIENT_DATA = {
   ...VEGETABLES_DATA,
   ...FRUIT_DATA,

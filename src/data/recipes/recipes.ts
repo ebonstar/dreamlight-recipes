@@ -2,14 +2,15 @@ import { Ingredient } from "../ingredients";
 
 export type Recipe = {
   name: string;
-  type: typeof RECIPE_TYPE[number];
+  type: RecipeType;
   stars: RecipeStars;
   ingredients: Ingredient[];
 };
 
-export type RecipeStars = 1 | 2 | 3 | 4 | 5;
-
+export type RecipeType = typeof RECIPE_TYPE[number];
 export const RECIPE_TYPE = ["Appetizer", "Entrée", "Dessert"] as const;
+
+export type RecipeStars = 1 | 2 | 3 | 4 | 5;
 
 export const RECIPES: Recipe[] = [
   {
