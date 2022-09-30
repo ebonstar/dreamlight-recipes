@@ -1,5 +1,6 @@
 import { Recipe } from "../data/recipes";
 import { styled } from "../stitches.config";
+import IngredientList from "./IngredientList";
 import { Stars } from "./Stars";
 
 const RecipeGrid = styled("div", {
@@ -10,7 +11,8 @@ const RecipeGrid = styled("div", {
     "name stars type"
     "ingredients ingredients ingredients"
   `,
-  gridGap: "10px 0",
+  gridGap: "8px",
+  alignItems: "center",
   marginBottom: "8px",
   padding: "8px 24px",
   background: "$slate3",
@@ -41,11 +43,9 @@ export function RecipeItem({ id, recipe }: { id: string; recipe: Recipe }) {
         <Stars number={recipe.stars} />
       </GridArea>
       <GridArea area="type">{recipe.type}</GridArea>
-      <div>
-        {recipe.ingredients.map((ingredient, i) => (
-          <button key={i}>{ingredient}</button>
-        ))}
-      </div>
+      <GridArea area="ingredients">
+        <IngredientList ingredients={recipe.ingredients} />
+      </GridArea>
     </RecipeGrid>
   );
 }
