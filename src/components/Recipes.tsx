@@ -1,4 +1,3 @@
-import { Box, Button, Text } from "grommet";
 import { Recipe, RECIPES } from "../data/recipes";
 import { ALL_INGREDIENT_DATA, Ingredient } from "../data/ingredients";
 import { GameLocation, GAME_LOCATIONS } from "../data/locations";
@@ -12,6 +11,7 @@ import {
 } from "@tanstack/react-table";
 import { Stars } from "./Stars";
 import { SmallTag } from "./Tag";
+import { LocationButton } from "./Location";
 
 const columns: ColumnDef<Recipe, any>[] = [
   { accessorKey: "name" },
@@ -66,49 +66,34 @@ function Recipes() {
   });
 
   return (
-    <Box>
-      <Box direction="row" wrap>
-        {GAME_LOCATIONS.map((location) => (
-          <Button
-            key={location}
-            label={location}
-            onClick={() => toggleLocation(location)}
-            size="small"
-            primary={locations.includes(location)}
-            margin={{ right: "xsmall" }}
-          />
-        ))}
-      </Box>
+    <div>
+      {GAME_LOCATIONS.map((location) => (
+        <LocationButton
+          key={location}
+          onClick={() => toggleLocation(location)}
+          status={locations.includes(location) ? "active" : undefined}
+        >
+          {location}
+        </LocationButton>
+      ))}
       {table.getRowModel().rows.map((row) => {
         const { original: recipe } = row;
         return (
-          <Box
-            key={row.id}
-            margin="xsmall"
-            pad="xsmall"
-            background="light"
-            round="xsmall"
-          >
-            <Box direction="row" gap="small">
-              <Text weight="bold">{recipe.name}</Text>
-              <SmallTag value={recipe.type} />
-            </Box>
+          <div key={row.id}>
+            <div>
+              <span>{recipe.name}</span>
+              <SmallTag>{recipe.type}</SmallTag>
+            </div>
             <Stars number={recipe.stars} />
-            <Box direction="row" margin={{ top: "xsmall" }}>
-              {recipe.ingredients.map((ingredient, i) => (
-                <Button
-                  key={i}
-                  label={ingredient}
-                  size="small"
-                  primary
-                  margin={{ right: "xsmall" }}
-                />
+            <div>
+              {recipe.ingredients.map((ingredient) => (
+                <button key={ingredient}>{ingredient}</button>
               ))}
-            </Box>
-          </Box>
+            </div>
+          </div>
         );
       })}
-    </Box>
+    </div>
   );
 }
 

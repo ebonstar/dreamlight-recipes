@@ -1,25 +1,14 @@
-import { Box, Grommet, Heading } from "grommet";
 import Recipes from "./components/Recipes";
-import { theme } from "./theme";
+import { globalStyles } from "./stitches.config";
 
 function App() {
+  globalStyles();
+
   return (
-    <Grommet full theme={theme}>
-      <Box align="center">
-        <Box
-          width={{ min: "large", max: "xxlarge" }}
-          pad="small"
-          background="medium"
-        >
-          <Box>
-            <Heading alignSelf="center" level="1" size="small" color="white">
-              Dreamlight Valley Recipe Book
-            </Heading>
-          </Box>
-          <Recipes />
-        </Box>
-      </Box>
-    </Grommet>
+    <div>
+      <h1>Dreamlight Valley Recipe Book</h1>
+      <Recipes />
+    </div>
   );
 }
 

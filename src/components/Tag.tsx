@@ -1,13 +1,7 @@
-import { Tag } from "grommet";
-import styled from "styled-components";
+import { styled } from "../stitches.config";
 
-const StyledSmallTag = styled(Tag)`
-  & > div {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-`;
-
-export function SmallTag({ value }: { value: string }) {
-  return <StyledSmallTag value={value} size="xsmall" />;
-}
+export const SmallTag = styled("span", {
+  backgroundColor: "$sky6",
+  border: "none",
+  borderRadius: "2px",
+});
