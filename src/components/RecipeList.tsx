@@ -11,7 +11,6 @@ import {
 } from "@tanstack/react-table";
 import { Stars } from "./Stars";
 import { SmallTag } from "./Tag";
-import { LocationList } from "./LocationList";
 
 const columns: ColumnDef<Recipe, any>[] = [
   { accessorKey: "name" },
@@ -29,10 +28,7 @@ const columns: ColumnDef<Recipe, any>[] = [
 
 const data: Recipe[] = RECIPES;
 
-function Recipes() {
-  const [locations, setLocations] = useState<GameLocation[]>([
-    ...GAME_LOCATIONS,
-  ]);
+export function RecipeList({ locations }: { locations: GameLocation[] }) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   // update available recipes when selected locations change
@@ -47,13 +43,6 @@ function Recipes() {
     setColumnFilters([{ id: "ingredients", value: missingIngredients }]);
   }, [locations]);
 
-  const toggleLocation = (location: GameLocation) => {
-    const newLocations = locations.includes(location)
-      ? locations.filter((l) => l !== location)
-      : [...locations, location];
-    setLocations(newLocations);
-  };
-
   const table = useReactTable<Recipe>({
     data,
     columns,
@@ -67,11 +56,6 @@ function Recipes() {
 
   return (
     <div>
-      <LocationList
-        allLocations={GAME_LOCATIONS}
-        availableLocations={locations}
-        toggleLocation={toggleLocation}
-      />
       {table.getRowModel().rows.map((row) => {
         const { original: recipe } = row;
         return (
@@ -82,8 +66,8 @@ function Recipes() {
             </div>
             <Stars number={recipe.stars} />
             <div>
-              {recipe.ingredients.map((ingredient) => (
-                <button key={ingredient}>{ingredient}</button>
+              {recipe.ingredients.map((ingredient, i) => (
+                <button key={i}>{ingredient}</button>
               ))}
             </div>
           </div>
@@ -92,5 +76,3 @@ function Recipes() {
     </div>
   );
 }
-
-export default Recipes;
