@@ -11,7 +11,7 @@ import {
 } from "@tanstack/react-table";
 import { Stars } from "./Stars";
 import { SmallTag } from "./Tag";
-import { LocationButton } from "./Location";
+import { LocationList } from "./LocationList";
 
 const columns: ColumnDef<Recipe, any>[] = [
   { accessorKey: "name" },
@@ -67,15 +67,11 @@ function Recipes() {
 
   return (
     <div>
-      {GAME_LOCATIONS.map((location) => (
-        <LocationButton
-          key={location}
-          onClick={() => toggleLocation(location)}
-          status={locations.includes(location) ? "active" : undefined}
-        >
-          {location}
-        </LocationButton>
-      ))}
+      <LocationList
+        allLocations={GAME_LOCATIONS}
+        availableLocations={locations}
+        toggleLocation={toggleLocation}
+      />
       {table.getRowModel().rows.map((row) => {
         const { original: recipe } = row;
         return (
