@@ -9,8 +9,7 @@ import {
   getFilteredRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { Stars } from "./Stars";
-import { SmallTag } from "./Tag";
+import { RecipeItem } from "./RecipeItem";
 
 const columns: ColumnDef<Recipe, any>[] = [
   { accessorKey: "name" },
@@ -25,8 +24,6 @@ const columns: ColumnDef<Recipe, any>[] = [
     },
   },
 ];
-
-const data: Recipe[] = RECIPES;
 
 export function RecipeList({ locations }: { locations: GameLocation[] }) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -44,7 +41,7 @@ export function RecipeList({ locations }: { locations: GameLocation[] }) {
   }, [locations]);
 
   const table = useReactTable<Recipe>({
-    data,
+    data: RECIPES,
     columns,
     state: {
       columnFilters,
@@ -56,23 +53,9 @@ export function RecipeList({ locations }: { locations: GameLocation[] }) {
 
   return (
     <div>
-      {table.getRowModel().rows.map((row) => {
-        const { original: recipe } = row;
-        return (
-          <div key={row.id}>
-            <div>
-              <span>{recipe.name}</span>
-              <SmallTag>{recipe.type}</SmallTag>
-            </div>
-            <Stars number={recipe.stars} />
-            <div>
-              {recipe.ingredients.map((ingredient, i) => (
-                <button key={i}>{ingredient}</button>
-              ))}
-            </div>
-          </div>
-        );
-      })}
+      {table.getRowModel().rows.map((row) => (
+        <RecipeItem id={row.id} recipe={row.original} />
+      ))}
     </div>
   );
 }
