@@ -8,7 +8,6 @@ import {
   ColumnFiltersState,
   getCoreRowModel,
   getFilteredRowModel,
-  Row,
   useReactTable,
 } from "@tanstack/react-table";
 import { Stars } from "./Stars";
