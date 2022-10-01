@@ -24,7 +24,7 @@ const GridArea = styled("div", {
     area: {
       name: { gridArea: "name" },
       stars: { gridArea: "stars" },
-      type: { gridArea: "type" },
+      type: { gridArea: "type", fontSize: "0.8em", textAlign: "right" },
       ingredients: { gridArea: "ingredients" },
     },
   },
