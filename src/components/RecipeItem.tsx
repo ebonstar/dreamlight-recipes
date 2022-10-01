@@ -24,7 +24,12 @@ const GridArea = styled("div", {
     area: {
       name: { gridArea: "name" },
       stars: { gridArea: "stars" },
-      type: { gridArea: "type", fontSize: "0.8em", textAlign: "right" },
+      type: {
+        gridArea: "type",
+        fontSize: "0.8em",
+        textAlign: "right",
+        fontWeight: "lighter",
+      },
       ingredients: { gridArea: "ingredients" },
     },
   },
@@ -32,6 +37,7 @@ const GridArea = styled("div", {
 
 const RecipeName = styled("h3", {
   margin: "0",
+  fontWeight: "lighter",
 });
 
 export function RecipeItem({ id, recipe }: { id: string; recipe: Recipe }) {

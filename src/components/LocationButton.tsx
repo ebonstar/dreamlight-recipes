@@ -36,6 +36,7 @@ const GridArea = styled("div", {
       name: {
         gridArea: "name",
         textAlign: "center",
+        fontSize: "0.8em",
       },
     },
   },

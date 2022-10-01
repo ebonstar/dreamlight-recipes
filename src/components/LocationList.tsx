@@ -19,7 +19,7 @@ const StyledCollapsible = styled(Collapsible.Root, {
 });
 
 const StyledTrigger = styled("div", {
-  fontWeight: "bold",
+  fontWeight: "lighter",
   cursor: "pointer",
   "&::after": {
     content: "▼",
