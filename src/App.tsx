@@ -26,7 +26,7 @@ function App() {
   return (
     <Wrapper>
       <h1>Dreamlight Valley Recipe Book</h1>
-      <LocationList<GameLocation>
+      <LocationList
         allLocations={GAME_LOCATIONS}
         availableLocations={locations}
         toggleLocation={toggleLocation}

@@ -1,26 +1,69 @@
+import * as Toggle from "@radix-ui/react-toggle";
+import { GameLocation } from "../data/locations";
 import { styled } from "../stitches.config";
 
-export const LocationButton = styled("button", {
-  fontSize: "16px",
-  fontWeight: "bold",
-  border: "4px solid $sky4",
-  padding: "2px 8px",
-  background: "none",
-  color: "$sky11",
-  borderRadius: "8px",
-  "&:hover": {
-    backgroundColor: "$sky5",
-    borderColor: "$sky5",
-    cursor: "pointer",
+const StyledToggle = styled(Toggle.Root, {
+  all: "unset",
+  width: "80px",
+  cursor: "pointer",
+  "& svg": {
+    width: "80px",
+    height: "80px",
+    fill: "$slate5",
   },
-  "&:active": {
-    backgroundColor: "$sky6",
+  "&[data-state=on]": {
+    "& svg": { fill: "$sky11" },
   },
+});
+
+const StyledLocation = styled("div", {
+  display: "grid",
+  gridTemplateColumns: "1fr",
+  gridTemplateRows: "2fr 1fr",
+  gridTemplateAreas: `
+    "icon"
+    "name"
+  `,
+  justifyItems: "center",
+});
+
+const GridArea = styled("div", {
   variants: {
-    status: {
-      active: {
-        backgroundColor: "$sky4",
+    area: {
+      icon: {
+        gridArea: "icon",
+      },
+      name: {
+        gridArea: "name",
+        textAlign: "center",
       },
     },
   },
 });
+
+export function LocationButton({
+  icon: Icon,
+  location,
+  pressed,
+  toggleLocation,
+}: {
+  icon: React.FC;
+  location: GameLocation;
+  pressed: boolean;
+  toggleLocation: () => void;
+}) {
+  return (
+    <StyledToggle
+      pressed={pressed}
+      onPressedChange={() => toggleLocation()}
+      asChild
+    >
+      <StyledLocation>
+        <GridArea area="icon">
+          <Icon />
+        </GridArea>
+        <GridArea area="name">{location}</GridArea>
+      </StyledLocation>
+    </StyledToggle>
+  );
+}
