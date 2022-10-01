@@ -42,7 +42,7 @@ const GridArea = styled("div", {
   },
 });
 
-export function LocationButton({
+export function LocationToggle({
   icon: Icon,
   location,
   pressed,

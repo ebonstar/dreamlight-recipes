@@ -10,7 +10,7 @@ import { PlazaIcon } from "../assets/PlazaIcon";
 import { SunlightPlateauIcon } from "../assets/SunlitPlateauIcon";
 import { GameLocation } from "../data/locations";
 import { styled } from "../stitches.config";
-import { LocationButton } from "./LocationButton";
+import { LocationToggle } from "./LocationToggle";
 
 const StyledCollapsible = styled(Collapsible.Root, {
   padding: "8px",
@@ -65,7 +65,7 @@ export function LocationList({
       </Collapsible.Trigger>
       <StyledContent>
         {allLocations.map((location) => (
-          <LocationButton
+          <LocationToggle
             key={location}
             icon={iconLookup[location]}
             location={location}
