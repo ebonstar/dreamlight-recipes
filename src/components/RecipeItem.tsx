@@ -12,9 +12,10 @@ const RecipeGrid = styled("div", {
     "ingredients ingredients ingredients"
   `,
   gridGap: "8px",
-  alignItems: "center",
+  alignItems: "end",
   marginBottom: "8px",
-  padding: "8px 24px",
+  padding: "12px 24px",
+  paddingTop: "0",
   background: "$slate3",
 });
 

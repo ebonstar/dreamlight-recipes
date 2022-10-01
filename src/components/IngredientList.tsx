@@ -4,7 +4,7 @@ import { styled } from "../stitches.config";
 const IngredientButton = styled("button", {
   width: "120px",
   height: "30px",
-  marginRight: "4px",
+  margin: "4px",
   border: "none",
   borderRadius: "4px",
   color: "$slate12",
