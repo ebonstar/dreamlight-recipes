@@ -54,7 +54,7 @@ export function RecipeList({ locations }: { locations: GameLocation[] }) {
   return (
     <div>
       {table.getRowModel().rows.map((row) => (
-        <RecipeItem id={row.id} recipe={row.original} />
+        <RecipeItem key={row.id} id={row.id} recipe={row.original} />
       ))}
     </div>
   );
