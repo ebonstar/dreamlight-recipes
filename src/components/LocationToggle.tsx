@@ -14,6 +14,9 @@ const StyledToggle = styled(Toggle.Root, {
   "&[data-state=on]": {
     "& svg": { fill: "$sky11" },
   },
+  "&:hover svg": {
+    fill: "$slate12",
+  },
 });
 
 const StyledLocation = styled("div", {
