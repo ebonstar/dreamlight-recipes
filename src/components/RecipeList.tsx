@@ -1,4 +1,11 @@
-import { Recipe, RECIPES } from "../data/recipes";
+import {
+  Recipe,
+  RECIPES,
+  RecipeStars,
+  RecipeType,
+  RECIPE_STARS,
+  RECIPE_TYPE,
+} from "../data/recipes";
 import { ALL_INGREDIENT_DATA, Ingredient } from "../data/ingredients";
 import { GameLocation, GAME_LOCATIONS } from "../data/locations";
 import { useEffect, useState } from "react";
@@ -12,11 +19,12 @@ import {
 import { RecipeItem } from "./RecipeItem";
 import { useDebouncyFn } from "use-debouncy";
 import { RecipeSearch } from "./RecipeSearch";
+import { RecipeFilter } from "./RecipeFilter";
 
 const columns: ColumnDef<Recipe, any>[] = [
   { accessorKey: "name" },
   { accessorKey: "type" },
-  { accessorKey: "stars" },
+  { accessorKey: "stars", filterFn: "equals" },
   {
     accessorKey: "ingredients",
     filterFn: (row, _, missingIngredients) => {
@@ -48,9 +56,14 @@ export function RecipeList({ locations }: { locations: GameLocation[] }) {
     ]);
   }, [locations]);
 
-  const handleChange = useDebouncyFn((value) => {
-    const otherFilters = columnFilters.filter((rule) => rule.id !== "name");
-    setColumnFilters([...otherFilters, { id: "name", value }]);
+  const handleFilterChange = <T,>(id: string, value: T | undefined) => {
+    const otherFilters = columnFilters.filter((rule) => rule.id !== id);
+    if (value) setColumnFilters([...otherFilters, { id, value }]);
+    else setColumnFilters(otherFilters);
+  };
+
+  const handleNameFilter = useDebouncyFn((value) => {
+    handleFilterChange("name", value);
   }, 400);
 
   const table = useReactTable<Recipe>({
@@ -66,7 +79,17 @@ export function RecipeList({ locations }: { locations: GameLocation[] }) {
 
   return (
     <div>
-      <RecipeSearch handleChange={handleChange} />
+      <RecipeSearch handleChange={handleNameFilter} />
+      <RecipeFilter
+        filterName="Recipe Type"
+        filterValues={RECIPE_TYPE}
+        onFilterChange={(value) => handleFilterChange("type", value)}
+      />
+      <RecipeFilter
+        filterName="Recipe Stars"
+        filterValues={RECIPE_STARS}
+        onFilterChange={(value) => handleFilterChange("stars", value)}
+      />
       {table.getRowModel().rows.map((row) => (
         <RecipeItem key={row.id} id={row.id} recipe={row.original} />
       ))}

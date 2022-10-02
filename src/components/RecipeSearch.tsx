@@ -3,7 +3,7 @@ import { styled } from "../stitches.config";
 const StyledInput = styled("input", {
   width: "100%",
   boxSizing: "border-box",
-  marginBottom: "16px",
+  marginBottom: "8px",
   padding: "12px 24px",
   border: "none",
   borderRadius: "2px",
@@ -11,7 +11,7 @@ const StyledInput = styled("input", {
   color: "$slate3",
   backgroundColor: "$slate12",
   "&:focus": {
-    boxShadow: "0 0 16px 0 $colors$sky11",
+    outline: "2px solid $sky9",
   },
 });
 

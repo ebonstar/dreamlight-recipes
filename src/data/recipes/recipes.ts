@@ -10,7 +10,8 @@ export type Recipe = {
 export type RecipeType = typeof RECIPE_TYPE[number];
 export const RECIPE_TYPE = ["Appetizer", "Entrée", "Dessert"] as const;
 
-export type RecipeStars = 1 | 2 | 3 | 4 | 5;
+export type RecipeStars = typeof RECIPE_STARS[number];
+export const RECIPE_STARS = [1, 2, 3, 4, 5] as const;
 
 export const RECIPES: Recipe[] = [
   {
