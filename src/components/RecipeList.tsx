@@ -10,6 +10,8 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { RecipeItem } from "./RecipeItem";
+import { useDebouncyFn } from "use-debouncy";
+import { RecipeSearch } from "./RecipeSearch";
 
 const columns: ColumnDef<Recipe, any>[] = [
   { accessorKey: "name" },
@@ -37,8 +39,19 @@ export function RecipeList({ locations }: { locations: GameLocation[] }) {
           missingIngredients.push(ingredient as Ingredient);
       }
     }
-    setColumnFilters([{ id: "ingredients", value: missingIngredients }]);
+    const otherFilters = columnFilters.filter(
+      (rule) => rule.id !== "ingredients"
+    );
+    setColumnFilters([
+      ...otherFilters,
+      { id: "ingredients", value: missingIngredients },
+    ]);
   }, [locations]);
+
+  const handleChange = useDebouncyFn((value) => {
+    const otherFilters = columnFilters.filter((rule) => rule.id !== "name");
+    setColumnFilters([...otherFilters, { id: "name", value }]);
+  }, 400);
 
   const table = useReactTable<Recipe>({
     data: RECIPES,
@@ -53,6 +66,7 @@ export function RecipeList({ locations }: { locations: GameLocation[] }) {
 
   return (
     <div>
+      <RecipeSearch handleChange={handleChange} />
       {table.getRowModel().rows.map((row) => (
         <RecipeItem key={row.id} id={row.id} recipe={row.original} />
       ))}
