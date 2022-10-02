@@ -9,6 +9,9 @@ export const { styled, globalCss } = createStitches({
       ...skyDark,
     },
   },
+  media: {
+    bp1: "(min-width: 640px)",
+  },
 });
 
 export const globalStyles = globalCss(...normalize, {

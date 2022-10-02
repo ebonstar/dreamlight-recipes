@@ -5,18 +5,26 @@ import { Stars } from "./Stars";
 
 const RecipeGrid = styled("div", {
   display: "grid",
-  gridTemplateColumns: "2fr 1fr 1fr",
-  gridTemplateRows: "1fr 1fr",
+  gridTemplateColumns: "1fr 1fr",
+  gridTemplateRows: "auto auto auto",
   gridTemplateAreas: `
-    "name stars type"
-    "ingredients ingredients ingredients"
+    "name name"
+    "stars type"
+    "ingredients ingredients"
   `,
   gridGap: "8px",
   alignItems: "end",
   marginBottom: "8px",
   padding: "12px 24px",
-  paddingTop: "0",
   background: "$slate3",
+  "@bp1": {
+    gridTemplateColumns: "2fr 1fr 1fr",
+    gridTemplateRows: "auto auto",
+    gridTemplateAreas: `
+      "name stars type"
+      "ingredients ingredients ingredients"
+    `,
+  },
 });
 
 const GridArea = styled("div", {
