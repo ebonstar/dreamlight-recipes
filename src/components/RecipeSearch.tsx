@@ -22,7 +22,7 @@ export function RecipeSearch({
 }) {
   return (
     <StyledInput
-      placeholder="Search Recipes"
+      placeholder="Recipe name..."
       onChange={(e) => handleChange(e.target.value)}
     />
   );
