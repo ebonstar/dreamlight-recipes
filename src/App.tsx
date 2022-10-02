@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Root as DialogRoot } from "@radix-ui/react-dialog";
+import * as Dialog from "@radix-ui/react-dialog";
 import { globalStyles, styled } from "./stitches.config";
 import { LocationList } from "./components/LocationList";
 import { RecipeList } from "./components/RecipeList";
@@ -25,13 +27,24 @@ function App() {
 
   return (
     <Wrapper>
-      <h1>Dreamlight Valley Recipe Book</h1>
-      <LocationList
-        allLocations={GAME_LOCATIONS}
-        availableLocations={locations}
-        toggleLocation={toggleLocation}
-      />
-      <RecipeList locations={locations} />
+      <DialogRoot>
+        <h1>Dreamlight Valley Recipe Book</h1>
+        <LocationList
+          allLocations={GAME_LOCATIONS}
+          availableLocations={locations}
+          toggleLocation={toggleLocation}
+        />
+        <RecipeList locations={locations} />
+
+        <Dialog.Portal>
+          <Dialog.Overlay />
+          <Dialog.Content>
+            <Dialog.Title>TITLE</Dialog.Title>
+            <Dialog.Description>PIES</Dialog.Description>
+            <Dialog.Close />
+          </Dialog.Content>
+        </Dialog.Portal>
+      </DialogRoot>
     </Wrapper>
   );
 }
