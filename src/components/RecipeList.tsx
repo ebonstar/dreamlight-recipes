@@ -1,11 +1,4 @@
-import {
-  Recipe,
-  RECIPES,
-  RecipeStars,
-  RecipeType,
-  RECIPE_STARS,
-  RECIPE_TYPE,
-} from "../data/recipes";
+import { Recipe, RECIPES, RECIPE_STARS, RECIPE_TYPE } from "../data/recipes";
 import { ALL_INGREDIENT_DATA, Ingredient } from "../data/ingredients";
 import { GameLocation, GAME_LOCATIONS } from "../data/locations";
 import { useEffect, useState } from "react";
