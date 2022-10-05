@@ -8,7 +8,7 @@ const StyledOverlay = styled(DialogPrimitive.Overlay, {
   right: 0,
   bottom: 0,
   left: 0,
-  backgroundColor: "black",
+  backgroundColor: "$slate1",
   opacity: "50%",
   display: "grid",
   placeItems: "center",
@@ -29,6 +29,7 @@ const StyledContent = styled(DialogPrimitive.Content, {
   boxShadow:
     "box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
   "&:focus": { outline: "none" },
+  "& h2": { fontWeight: "lighter", margin: "8px 0" },
 });
 
 export function Dialog({
@@ -43,9 +44,7 @@ export function Dialog({
       <DialogPrimitive.Trigger asChild>{trigger}</DialogPrimitive.Trigger>
       <DialogPrimitive.Portal>
         <StyledOverlay />
-        <StyledContent>
-          <DialogPrimitive.Description>{children}</DialogPrimitive.Description>
-        </StyledContent>
+        <StyledContent>{children}</StyledContent>
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>
   );

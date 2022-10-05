@@ -1,10 +1,10 @@
-import { Ingredient } from "../ingredients";
+import { AnyOfType, Ingredient } from "../ingredients";
 
 export type Recipe = {
   name: string;
   type: RecipeType;
   stars: RecipeStars;
-  ingredients: Ingredient[];
+  ingredients: (Ingredient | AnyOfType)[];
 };
 
 export type RecipeType = typeof RECIPE_TYPE[number];

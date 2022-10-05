@@ -122,7 +122,6 @@ export const ALL_INGREDIENTS = [
   ...SPICES_HERBS,
   ...SWEETS,
   ...ICE,
-  ...ANY_OF_TYPE,
 ] as const;
 
 export type IngredientData = {
