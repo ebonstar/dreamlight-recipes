@@ -12,10 +12,10 @@ const StyledToggle = styled(Toggle.Root, {
     fill: "$faded",
   },
   "&[data-state=on]": {
-    "& svg": { fill: "$primary" },
+    "& svg": { fill: "$accentText" },
   },
   "&:hover svg": {
-    fill: "$text",
+    fill: "$background",
   },
 });
 

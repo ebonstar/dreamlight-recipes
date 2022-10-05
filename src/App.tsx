@@ -3,6 +3,7 @@ import { globalStyles, styled } from "./stitches.config";
 import { LocationList } from "./components/LocationList";
 import { RecipeList } from "./components/RecipeList";
 import { GameLocation, GAME_LOCATIONS } from "./data/locations";
+import Header from "./components/Header";
 
 const Wrapper = styled("div", {
   margin: "0 auto",
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <Wrapper>
-      <h1>Dreamlight Valley Recipe Book</h1>
+      <Header>Dreamlight Valley Recipe Book</Header>
       <LocationList
         allLocations={GAME_LOCATIONS}
         availableLocations={locations}
