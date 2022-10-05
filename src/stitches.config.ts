@@ -2,6 +2,8 @@ import { slateDark, skyDark, cyan, orange } from "@radix-ui/colors";
 import { createStitches } from "@stitches/react";
 import { normalize } from "stitches-normalize-css";
 
+export type Theme = "default" | "colourful";
+
 export const { createTheme, styled, globalCss } = createStitches({
   theme: {
     colors: {
