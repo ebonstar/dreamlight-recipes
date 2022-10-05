@@ -12,11 +12,12 @@ const RecipeGrid = styled("div", {
     "stars type"
     "ingredients ingredients"
   `,
-  gridGap: "8px",
+  gridGap: "$2",
   alignItems: "end",
-  marginBottom: "8px",
-  padding: "12px 24px",
-  background: "$slate3",
+  marginBottom: "$2",
+  padding: "$3 $4",
+  borderRadius: "$1",
+  background: "$componentBackground",
   "@bp1": {
     gridTemplateColumns: "2fr 1fr 1fr",
     gridTemplateRows: "auto auto",
@@ -34,7 +35,7 @@ const GridArea = styled("div", {
       stars: { gridArea: "stars" },
       type: {
         gridArea: "type",
-        fontSize: "0.8em",
+        fontSize: "$1",
         textAlign: "right",
         fontWeight: "lighter",
       },

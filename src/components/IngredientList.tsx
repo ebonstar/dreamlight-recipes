@@ -12,14 +12,14 @@ import { Dialog } from "./Dialog";
 const IngredientButton = styled("button", {
   width: "120px",
   height: "30px",
-  margin: "4px",
+  margin: "$1",
   border: "none",
-  borderRadius: "4px",
-  color: "$slate12",
-  backgroundColor: "$slate2",
+  borderRadius: "$2",
+  color: "$text",
+  backgroundColor: "$secondary",
   cursor: "pointer",
   "&:hover": {
-    border: "2px solid $sky9",
+    border: "2px solid $primary",
   },
 });
 

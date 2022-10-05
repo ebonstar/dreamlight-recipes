@@ -3,7 +3,7 @@ import { styled } from "../stitches.config";
 
 const FilterRow = styled("div", {
   display: "flex",
-  marginBottom: "8px",
+  marginBottom: "$2",
   alignItems: "center",
 });
 const FilterName = styled("div", {
@@ -11,20 +11,20 @@ const FilterName = styled("div", {
   fontWeight: "lighter",
 });
 const FilterToggle = styled(ToggleGroup.Item, {
-  padding: "4px 12px",
-  marginRight: "8px",
+  padding: "$1 $3",
+  marginRight: "$2",
   border: "none",
-  borderRadius: "2px",
-  color: "$slate12",
-  backgroundColor: "$slate3",
-  fontSize: "14px",
+  borderRadius: "$1",
+  color: "$text",
+  backgroundColor: "$componentBackground",
+  fontSize: "$2",
   cursor: "pointer",
   "&[data-state=on]": {
-    color: "$slate3",
-    backgroundColor: "$slate12",
+    color: "$componentBackground",
+    backgroundColor: "$text",
   },
   "&:hover": {
-    outline: "2px solid $sky9",
+    outline: "2px solid $primary",
   },
 });
 
