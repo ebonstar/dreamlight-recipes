@@ -12,6 +12,11 @@ export const { styled, globalCss } = createStitches({
       secondary: slateDark.slate2,
       faded: slateDark.slate5,
     },
+    fontSizes: {
+      1: "13px",
+      2: "14px",
+      3: "16px",
+    },
   },
   media: {
     bp1: "(min-width: 640px)",
@@ -27,6 +32,6 @@ export const globalStyles = globalCss(...normalize, {
     fontFamily:
       "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif," +
       "Apple Color Emoji, Segoe UI Emoji, system-ui",
-    fontSize: "16px",
+    fontSize: "$3",
   },
 });

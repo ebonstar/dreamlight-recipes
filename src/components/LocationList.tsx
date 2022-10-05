@@ -24,7 +24,7 @@ const StyledTrigger = styled("div", {
   "&::after": {
     content: "▼",
     marginLeft: "8px",
-    fontSize: "0.8em",
+    fontSize: "$2",
   },
   "&[data-state=open]::after": {
     content: "▲",

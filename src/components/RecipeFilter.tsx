@@ -17,7 +17,7 @@ const FilterToggle = styled(ToggleGroup.Item, {
   borderRadius: "2px",
   color: "$text",
   backgroundColor: "$componentBackground",
-  fontSize: "14px",
+  fontSize: "$2",
   cursor: "pointer",
   "&[data-state=on]": {
     color: "$componentBackground",

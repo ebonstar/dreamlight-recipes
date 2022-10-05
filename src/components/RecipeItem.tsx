@@ -34,7 +34,7 @@ const GridArea = styled("div", {
       stars: { gridArea: "stars" },
       type: {
         gridArea: "type",
-        fontSize: "0.8em",
+        fontSize: "$1",
         textAlign: "right",
         fontWeight: "lighter",
       },

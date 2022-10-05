@@ -7,7 +7,7 @@ const StyledInput = styled("input", {
   padding: "12px 24px",
   border: "none",
   borderRadius: "2px",
-  fontSize: "16px",
+  fontSize: "$3",
   color: "$background",
   backgroundColor: "$text",
   "&:focus": {
