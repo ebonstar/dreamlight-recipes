@@ -16,6 +16,8 @@ export const { styled, globalCss } = createStitches({
 
 export const globalStyles = globalCss(...normalize, {
   body: {
+    margin: "0",
+    padding: "0",
     color: "$slate12",
     backgroundColor: "$slate1",
     fontFamily:

@@ -1,5 +1,13 @@
-import { Ingredient } from "../data/ingredients";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import {
+  ALL_INGREDIENT_DATA,
+  AnyOfType,
+  ANY_OF_TYPE,
+  ANY_OF_TYPE_INGREDIENTS,
+  Ingredient,
+} from "../data/ingredients";
 import { styled } from "../stitches.config";
+import { Dialog } from "./Dialog";
 
 const IngredientButton = styled("button", {
   width: "120px",
@@ -9,17 +17,50 @@ const IngredientButton = styled("button", {
   borderRadius: "4px",
   color: "$slate12",
   backgroundColor: "$slate2",
+  cursor: "pointer",
+  "&:hover": {
+    border: "2px solid $sky9",
+  },
 });
 
-export default function IngredientList({
-  ingredients,
-}: {
-  ingredients: Ingredient[];
-}) {
+function IngredientDetails({ ingredient }: { ingredient: Ingredient }) {
+  const locations = ALL_INGREDIENT_DATA[ingredient as Ingredient].location;
+  return (
+    <div>
+      {locations.length > 1 ? "Locations: " : "Location: "}
+      {locations.join(", ")}
+    </div>
+  );
+}
+
+function TypeDetails({ ingredient }: { ingredient: AnyOfType }) {
+  return <div>{ANY_OF_TYPE_INGREDIENTS[ingredient].join(", ")}</div>;
+}
+
+const getIngredientDetails = (ingredient: Ingredient | AnyOfType) => {
+  // requires casting https://github.com/Microsoft/TypeScript/issues/26255
+  const isAnyOfType = ANY_OF_TYPE.includes(ingredient as AnyOfType);
+
+  return isAnyOfType ? (
+    <TypeDetails ingredient={ingredient as AnyOfType} />
+  ) : (
+    <IngredientDetails ingredient={ingredient as Ingredient} />
+  );
+};
+
+export function IngredientList({ ingredients }: { ingredients: Ingredient[] }) {
   return (
     <div>
       {ingredients.map((ingredient, i) => (
-        <IngredientButton key={i}>{ingredient}</IngredientButton>
+        <Dialog
+          key={i}
+          trigger={<IngredientButton>{ingredient}</IngredientButton>}
+        >
+          <DialogPrimitive.Title>{ingredient}</DialogPrimitive.Title>
+          <DialogPrimitive.Description>
+            {getIngredientDetails(ingredient)}
+          </DialogPrimitive.Description>
+        </Dialog>
       ))}
     </div>
   );
