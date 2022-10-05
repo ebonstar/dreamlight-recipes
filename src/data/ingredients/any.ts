@@ -4,7 +4,12 @@ import { FISH_DATA } from "./fish";
 import { FRUIT_DATA } from "./fruit";
 import { GRAINS_DATA } from "./grains";
 import { ICE_DATA } from "./ice";
-import { AnyOfType, ICE, Ingredient, IngredientData } from "./ingredients";
+import {
+  AnyOfType,
+  ANY_OF_TYPE,
+  Ingredient,
+  IngredientData,
+} from "./ingredients";
 import { SEAFOOD_DATA } from "./seafood";
 import { SPICES_HERBS_DATA } from "./spicesherbs";
 import { SWEETS_DATA } from "./sweets";
@@ -18,32 +23,30 @@ function getLocationsFromData(
   return [...new Set(allLocations)];
 }
 
-export const ANY_OF_TYPE_DATA: Record<AnyOfType, IngredientData> = {
-  "Any Vegetable": {
-    location: getLocationsFromData(VEGETABLES_DATA),
-  },
-  "Any Fruit": {
-    location: getLocationsFromData(FRUIT_DATA),
-  },
-  "Any Grain": {
-    location: getLocationsFromData(GRAINS_DATA),
-  },
-  "Any Dairy or Oil": {
-    location: getLocationsFromData(DAIRY_OIL_DATA),
-  },
-  "Any Fish": {
-    location: getLocationsFromData(FISH_DATA),
-  },
-  "Any Seafood": {
-    location: getLocationsFromData(SEAFOOD_DATA),
-  },
-  "Any Spice": {
-    location: getLocationsFromData(SPICES_HERBS_DATA),
-  },
-  "Any Sweet": {
-    location: getLocationsFromData(SWEETS_DATA),
-  },
-  "Any Ice": {
-    location: getLocationsFromData(ICE_DATA),
-  },
+const anyLookup: Record<
+  AnyOfType,
+  Partial<Record<Ingredient, IngredientData>>
+> = {
+  "Any Vegetable": VEGETABLES_DATA,
+  "Any Fruit": FRUIT_DATA,
+  "Any Grain": GRAINS_DATA,
+  "Any Dairy or Oil": DAIRY_OIL_DATA,
+  "Any Fish": FISH_DATA,
+  "Any Seafood": SEAFOOD_DATA,
+  "Any Spice": SPICES_HERBS_DATA,
+  "Any Sweet": SWEETS_DATA,
+  "Any Ice": ICE_DATA,
 };
+
+export const ANY_OF_TYPE_DATA: Record<AnyOfType, IngredientData> =
+  Object.fromEntries(
+    ANY_OF_TYPE.map((type) => [
+      type,
+      { location: getLocationsFromData(anyLookup[type]) },
+    ])
+  );
+
+export const ANY_OF_TYPE_INGREDIENTS: Record<AnyOfType, Ingredient[]> =
+  Object.fromEntries(
+    ANY_OF_TYPE.map((type) => [type, Object.keys[anyLookup[type]]])
+  );
