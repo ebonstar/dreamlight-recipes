@@ -34,9 +34,12 @@ const StyledTrigger = styled("div", {
 });
 
 const StyledContent = styled(Collapsible.Content, {
-  padding: "0 0 $1 0",
+  padding: "0",
   display: "flex",
   flexWrap: "wrap",
+  "&[data-state=open]": {
+    paddingBottom: "$1",
+  },
 });
 
 const iconLookup: Record<GameLocation, React.FC> = {
