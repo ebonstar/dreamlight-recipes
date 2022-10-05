@@ -14,8 +14,8 @@ const RecipeGrid = styled("div", {
   `,
   gridGap: "8px",
   alignItems: "end",
-  marginBottom: "8px",
-  padding: "12px 24px",
+  marginBottom: "$2",
+  padding: "$3 $4",
   borderRadius: "$1",
   background: "$componentBackground",
   "@bp1": {

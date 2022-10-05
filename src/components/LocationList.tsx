@@ -13,8 +13,8 @@ import { styled } from "../stitches.config";
 import { LocationToggle } from "./LocationToggle";
 
 const StyledCollapsible = styled(Collapsible.Root, {
-  padding: "8px",
-  marginBottom: "24px",
+  padding: "$2",
+  marginBottom: "$3",
   backgroundColor: "$secondary",
 });
 
@@ -23,7 +23,7 @@ const StyledTrigger = styled("div", {
   cursor: "pointer",
   "&::after": {
     content: "▼",
-    marginLeft: "8px",
+    marginLeft: "$2",
     fontSize: "$2",
   },
   "&[data-state=open]::after": {
@@ -32,7 +32,7 @@ const StyledTrigger = styled("div", {
 });
 
 const StyledContent = styled(Collapsible.Content, {
-  paddingTop: "0",
+  padding: "0 0 $1 0",
   display: "flex",
   flexWrap: "wrap",
 });

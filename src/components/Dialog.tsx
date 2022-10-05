@@ -23,13 +23,13 @@ const StyledContent = styled(DialogPrimitive.Content, {
   width: "90vw",
   maxWidth: "450px",
   maxHeight: "85vh",
-  padding: "12px 24px",
+  padding: "$3 $4",
   borderRadius: "$2",
   backgroundColor: "$componentBackground",
   boxShadow:
     "box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
   "&:focus": { outline: "none" },
-  "& h2": { fontWeight: "lighter", margin: "8px 0" },
+  "& h2": { fontWeight: "lighter", margin: "$2 0" },
 });
 
 export function Dialog({

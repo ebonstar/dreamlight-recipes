@@ -12,7 +12,7 @@ import { Dialog } from "./Dialog";
 const IngredientButton = styled("button", {
   width: "120px",
   height: "30px",
-  margin: "4px",
+  margin: "$1",
   border: "none",
   borderRadius: "$2",
   color: "$text",

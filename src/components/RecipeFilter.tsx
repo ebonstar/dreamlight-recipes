@@ -3,7 +3,7 @@ import { styled } from "../stitches.config";
 
 const FilterRow = styled("div", {
   display: "flex",
-  marginBottom: "8px",
+  marginBottom: "$2",
   alignItems: "center",
 });
 const FilterName = styled("div", {
@@ -11,8 +11,8 @@ const FilterName = styled("div", {
   fontWeight: "lighter",
 });
 const FilterToggle = styled(ToggleGroup.Item, {
-  padding: "4px 12px",
-  marginRight: "8px",
+  padding: "$1 $3",
+  marginRight: "$2",
   border: "none",
   borderRadius: "$1",
   color: "$text",

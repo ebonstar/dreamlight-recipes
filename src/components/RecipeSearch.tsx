@@ -3,8 +3,8 @@ import { styled } from "../stitches.config";
 const StyledInput = styled("input", {
   width: "100%",
   boxSizing: "border-box",
-  marginBottom: "8px",
-  padding: "12px 24px",
+  marginBottom: "$2",
+  padding: "$3 $4",
   border: "none",
   borderRadius: "$1",
   fontSize: "$3",
