@@ -8,10 +8,11 @@ const StyledInput = styled("input", {
   border: "none",
   borderRadius: "$1",
   fontSize: "$3",
-  color: "$background",
-  backgroundColor: "$text",
+  fontWeight: "lighter",
+  color: "black",
+  backgroundColor: "white",
   "&:focus": {
-    outline: "2px solid $primary",
+    outline: "2px solid $focus",
   },
 });
 

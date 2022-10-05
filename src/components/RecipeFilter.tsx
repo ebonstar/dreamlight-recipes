@@ -20,11 +20,10 @@ const FilterToggle = styled(ToggleGroup.Item, {
   fontSize: "$2",
   cursor: "pointer",
   "&[data-state=on]": {
-    color: "$componentBackground",
-    backgroundColor: "$text",
+    outline: "2px solid $focus",
   },
   "&:hover": {
-    outline: "2px solid $primary",
+    outline: "2px solid $focus",
   },
 });
 

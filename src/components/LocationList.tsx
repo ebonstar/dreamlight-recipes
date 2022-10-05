@@ -15,7 +15,9 @@ import { LocationToggle } from "./LocationToggle";
 const StyledCollapsible = styled(Collapsible.Root, {
   padding: "$2",
   marginBottom: "$3",
-  backgroundColor: "$secondary",
+  backgroundColor: "$accent",
+  color: "$accentText",
+  borderRadius: "$2",
 });
 
 const StyledTrigger = styled("div", {
