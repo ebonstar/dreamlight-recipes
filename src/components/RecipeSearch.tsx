@@ -6,7 +6,7 @@ const StyledInput = styled("input", {
   marginBottom: "8px",
   padding: "12px 24px",
   border: "none",
-  borderRadius: "2px",
+  borderRadius: "$1",
   fontSize: "$3",
   color: "$background",
   backgroundColor: "$text",

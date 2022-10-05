@@ -14,7 +14,7 @@ const IngredientButton = styled("button", {
   height: "30px",
   margin: "4px",
   border: "none",
-  borderRadius: "4px",
+  borderRadius: "$2",
   color: "$text",
   backgroundColor: "$secondary",
   cursor: "pointer",
