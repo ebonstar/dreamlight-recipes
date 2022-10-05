@@ -1,7 +1,8 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect } from "react";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { slateDark, cyan } from "@radix-ui/colors";
 import { colourfulTheme, styled, Theme } from "../stitches.config";
+import { useLocalStorage } from "../utils/useLocalStorage";
 
 const Flex = styled("div", {
   display: "flex",
@@ -33,7 +34,7 @@ const ThemeToggle = styled(ToggleGroup.Item, {
 });
 
 export default function Header({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("default");
+  const [theme, setTheme] = useLocalStorage<Theme>("theme", "default");
   useEffect(() => {
     if (theme === "default") document.body.classList.remove(colourfulTheme);
     if (theme === "colourful") document.body.classList.add(colourfulTheme);
