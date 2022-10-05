@@ -1,6 +1,6 @@
 import { Recipe } from "../data/recipes";
 import { styled } from "../stitches.config";
-import IngredientList from "./IngredientList";
+import { IngredientList } from "./IngredientList";
 import { Stars } from "./Stars";
 
 const RecipeGrid = styled("div", {

@@ -1,6 +1,6 @@
-import * as Dialog from "@radix-ui/react-dialog";
 import { Ingredient } from "../data/ingredients";
 import { styled } from "../stitches.config";
+import { Dialog } from "./Dialog";
 
 const IngredientButton = styled("button", {
   width: "120px",
@@ -10,21 +10,22 @@ const IngredientButton = styled("button", {
   borderRadius: "4px",
   color: "$slate12",
   backgroundColor: "$slate2",
+  cursor: "pointer",
+  "&:hover": {
+    border: "2px solid $sky9",
+  },
 });
 
-export default function IngredientList({
-  ingredients,
-}: {
-  ingredients: Ingredient[];
-}) {
+export function IngredientList({ ingredients }: { ingredients: Ingredient[] }) {
   return (
     <div>
       {ingredients.map((ingredient, i) => (
-        <div key={i}>
-          <Dialog.Trigger asChild>
-            <IngredientButton>{ingredient}</IngredientButton>
-          </Dialog.Trigger>
-        </div>
+        <Dialog
+          key={i}
+          trigger={<IngredientButton>{ingredient}</IngredientButton>}
+        >
+          Dialog contents
+        </Dialog>
       ))}
     </div>
   );
