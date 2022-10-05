@@ -12,7 +12,7 @@ const RecipeGrid = styled("div", {
     "stars type"
     "ingredients ingredients"
   `,
-  gridGap: "8px",
+  gridGap: "$2",
   alignItems: "end",
   marginBottom: "$2",
   padding: "$3 $4",
