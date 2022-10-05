@@ -17,6 +17,7 @@ const RecipeGrid = styled("div", {
   marginBottom: "$2",
   padding: "$3 $4",
   borderRadius: "$1",
+  color: "$componentText",
   background: "$componentBackground",
   "@bp1": {
     gridTemplateColumns: "2fr 1fr 1fr",

@@ -5,14 +5,15 @@ const StyledInput = styled("input", {
   boxSizing: "border-box",
   marginBottom: "$2",
   padding: "$3 $4",
-  border: "none",
+  border: "2px solid $componentBackground",
   borderRadius: "$1",
   fontSize: "$3",
   fontWeight: "lighter",
   color: "black",
   backgroundColor: "white",
   "&:focus": {
-    outline: "2px solid $focus",
+    borderColor: "$focus",
+    outline: "none",
   },
 });
 

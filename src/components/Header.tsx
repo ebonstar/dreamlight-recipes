@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from "react";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
-import { slateDark, cyan } from "@radix-ui/colors";
+import { slateDark, indigo } from "@radix-ui/colors";
 import { colourfulTheme, styled, Theme } from "../stitches.config";
 import { useLocalStorage } from "../utils/useLocalStorage";
 
@@ -15,21 +15,21 @@ const StyledHeading = styled("h1", {
 
 const themes: Record<Theme, string> = {
   default: slateDark.slate3,
-  colourful: cyan.cyan9,
+  colourful: indigo.indigo9,
 };
 
 const ThemeToggle = styled(ToggleGroup.Item, {
   width: "20px",
   height: "20px",
-  marginLeft: "$2",
-  border: "none",
+  margin: "$2 0 0 $1",
+  border: "2px solid $background",
   borderRadius: "$1",
   cursor: "pointer",
   "&[data-state=on]": {
-    outline: "2px solid $focus",
+    borderColor: "$focus",
   },
   "&:hover": {
-    outline: "2px solid $focus",
+    borderColor: "$focus",
   },
 });
 
