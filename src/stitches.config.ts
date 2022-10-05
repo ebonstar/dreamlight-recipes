@@ -1,4 +1,4 @@
-import { slateDark, skyDark, indigo, plum } from "@radix-ui/colors";
+import { slateDark, skyDark, indigo, amber } from "@radix-ui/colors";
 import { createStitches } from "@stitches/react";
 import { normalize } from "stitches-normalize-css";
 
@@ -39,14 +39,14 @@ export const { createTheme, styled, globalCss } = createStitches({
 
 export const colourfulTheme = createTheme("colourful", {
   colors: {
-    background: indigo.indigo4,
+    background: amber.amber2,
     text: slateDark.slate1,
     componentBackground: indigo.indigo9,
     componentText: slateDark.slate12,
-    accent: plum.plum10,
-    accentText: slateDark.slate12,
-    focus: plum.plum11,
-    faded: plum.plum11,
+    accent: amber.amber6,
+    accentText: slateDark.slate1,
+    focus: amber.amber8,
+    faded: amber.amber7,
   },
 });
 
