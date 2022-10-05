@@ -46,5 +46,5 @@ export const ANY_OF_TYPE_DATA = Object.fromEntries(
 ) as Record<AnyOfType, IngredientData>;
 
 export const ANY_OF_TYPE_INGREDIENTS = Object.fromEntries(
-  ANY_OF_TYPE.map((type) => [type, Object.keys([anyLookup[type]])])
+  ANY_OF_TYPE.map((type) => [type, Object.keys(anyLookup[type])])
 ) as Record<AnyOfType, Ingredient[]>;
