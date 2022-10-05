@@ -38,15 +38,13 @@ const anyLookup: Record<
   "Any Ice": ICE_DATA,
 };
 
-export const ANY_OF_TYPE_DATA: Record<AnyOfType, IngredientData> =
-  Object.fromEntries(
-    ANY_OF_TYPE.map((type) => [
-      type,
-      { location: getLocationsFromData(anyLookup[type]) },
-    ])
-  );
+export const ANY_OF_TYPE_DATA = Object.fromEntries(
+  ANY_OF_TYPE.map((type) => [
+    type,
+    { location: getLocationsFromData(anyLookup[type]) },
+  ])
+) as Record<AnyOfType, IngredientData>;
 
-export const ANY_OF_TYPE_INGREDIENTS: Record<AnyOfType, Ingredient[]> =
-  Object.fromEntries(
-    ANY_OF_TYPE.map((type) => [type, Object.keys([anyLookup[type]])])
-  );
+export const ANY_OF_TYPE_INGREDIENTS = Object.fromEntries(
+  ANY_OF_TYPE.map((type) => [type, Object.keys([anyLookup[type]])])
+) as Record<AnyOfType, Ingredient[]>;
