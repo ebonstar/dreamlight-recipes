@@ -15,11 +15,11 @@ const IngredientButton = styled("button", {
   margin: "4px",
   border: "none",
   borderRadius: "4px",
-  color: "$slate12",
-  backgroundColor: "$slate2",
+  color: "$text",
+  backgroundColor: "$secondary",
   cursor: "pointer",
   "&:hover": {
-    border: "2px solid $sky9",
+    border: "2px solid $primary",
   },
 });
 

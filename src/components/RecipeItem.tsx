@@ -16,7 +16,7 @@ const RecipeGrid = styled("div", {
   alignItems: "end",
   marginBottom: "8px",
   padding: "12px 24px",
-  background: "$slate3",
+  background: "$componentBackground",
   "@bp1": {
     gridTemplateColumns: "2fr 1fr 1fr",
     gridTemplateRows: "auto auto",

@@ -15,16 +15,16 @@ const FilterToggle = styled(ToggleGroup.Item, {
   marginRight: "8px",
   border: "none",
   borderRadius: "2px",
-  color: "$slate12",
-  backgroundColor: "$slate3",
+  color: "$text",
+  backgroundColor: "$componentBackground",
   fontSize: "14px",
   cursor: "pointer",
   "&[data-state=on]": {
-    color: "$slate3",
-    backgroundColor: "$slate12",
+    color: "$componentBackground",
+    backgroundColor: "$text",
   },
   "&:hover": {
-    outline: "2px solid $sky9",
+    outline: "2px solid $primary",
   },
 });
 

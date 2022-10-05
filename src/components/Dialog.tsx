@@ -8,7 +8,7 @@ const StyledOverlay = styled(DialogPrimitive.Overlay, {
   right: 0,
   bottom: 0,
   left: 0,
-  backgroundColor: "$slate1",
+  backgroundColor: "$background",
   opacity: "50%",
   display: "grid",
   placeItems: "center",
@@ -25,7 +25,7 @@ const StyledContent = styled(DialogPrimitive.Content, {
   maxHeight: "85vh",
   padding: "12px 24px",
   borderRadius: 6,
-  backgroundColor: "$slate3",
+  backgroundColor: "$componentBackground",
   boxShadow:
     "box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
   "&:focus": { outline: "none" },

@@ -9,13 +9,13 @@ const StyledToggle = styled(Toggle.Root, {
   "& svg": {
     width: "80px",
     height: "80px",
-    fill: "$slate5",
+    fill: "$faded",
   },
   "&[data-state=on]": {
-    "& svg": { fill: "$sky11" },
+    "& svg": { fill: "$primary" },
   },
   "&:hover svg": {
-    fill: "$slate12",
+    fill: "$text",
   },
 });
 
