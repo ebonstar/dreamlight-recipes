@@ -48,7 +48,11 @@ const getIngredientDetails = (ingredient: Ingredient | AnyOfType) => {
   );
 };
 
-export function IngredientList({ ingredients }: { ingredients: Ingredient[] }) {
+export function IngredientList({
+  ingredients,
+}: {
+  ingredients: (Ingredient | AnyOfType)[];
+}) {
   return (
     <div>
       {ingredients.map((ingredient, i) => (
