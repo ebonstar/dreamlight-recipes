@@ -13,17 +13,17 @@ const FilterName = styled("div", {
 const FilterToggle = styled(ToggleGroup.Item, {
   padding: "$1 $3",
   marginRight: "$2",
-  border: "none",
+  border: "2px solid transparent",
   borderRadius: "$1",
   color: "$componentText",
   backgroundColor: "$componentBackground",
   fontSize: "$2",
   cursor: "pointer",
   "&[data-state=on]": {
-    outline: "2px solid $focus",
+    border: "2px solid $focus",
   },
   "&:hover": {
-    outline: "2px solid $focus",
+    border: "2px solid $focus",
   },
 });
 
