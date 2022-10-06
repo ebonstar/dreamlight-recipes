@@ -35,17 +35,23 @@ const ThemeToggle = styled(ToggleGroup.Item, {
 
 export default function Header({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useLocalStorage<Theme>("theme", "default");
+
   useEffect(() => {
     if (theme === "default") document.body.classList.remove(colourfulTheme);
     if (theme === "colourful") document.body.classList.add(colourfulTheme);
   }, [theme]);
+
+  const handleThemeClick = (theme: Theme | "") => {
+    if (theme === "") return;
+    setTheme(theme);
+  };
   return (
     <Flex>
       <StyledHeading>{children}</StyledHeading>
       <ToggleGroup.Root
         type="single"
         value={theme}
-        onValueChange={(value) => setTheme((value as Theme) || "default")}
+        onValueChange={(value) => handleThemeClick(value as Theme)}
       >
         {(Object.keys(themes) as Theme[]).map((option) => (
           <ThemeToggle
