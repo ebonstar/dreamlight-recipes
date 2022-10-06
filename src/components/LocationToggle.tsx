@@ -15,7 +15,7 @@ const StyledToggle = styled(Toggle.Root, {
     "& svg": { fill: "$accentText" },
   },
   "&:hover svg": {
-    fill: "$background",
+    fill: "$focus",
   },
 });
 
