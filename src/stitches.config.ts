@@ -3,16 +3,16 @@ import { createStitches } from "@stitches/react";
 import { normalize } from "stitches-normalize-css";
 
 export type Theme = "default" | "colourful";
-// #2ec8ee #151718
+
 export const { createTheme, styled, globalCss } = createStitches({
   theme: {
     colors: {
       backgroundImage: `
-        repeating-linear-gradient(315deg, #2EC8EE1C 92%, #073AFF00 100%),
-        repeating-radial-gradient(120% 120% at 240% 220%, #2EC8EE1A 30%, #073AFF14 39%),
-        radial-gradient(99% 99% at 109% 2%, #2ec8ee 0%, #073AFF00 100%),
-        radial-gradient(99% 99% at 21% 78%, #25d0ab 0%, #073AFF00 100%),
-        radial-gradient(160% 154% at 711px -303px, #151718 0%, #073AFFFF 100%)`,
+        repeating-linear-gradient(315deg, #2ec8ee1c 92%, #2ec8ee00 100%),
+        repeating-radial-gradient(80% 80% at 240% 220%, #2ec8ee1c 30%, #2ec8ee05 39%),
+        radial-gradient(99% 99% at 109% 2%, #2ec8ee 0%, #2ec8ee00 100%),
+        radial-gradient(99% 99% at 21% 78%, #9c5bd2 0%, #151718 100%),
+        radial-gradient(160% 154% at 80% -20%, #151718 0%, #25d0ab 100%)`,
       background: slateDark.slate1,
       text: slateDark.slate12,
       componentBackground: slateDark.slate3,
