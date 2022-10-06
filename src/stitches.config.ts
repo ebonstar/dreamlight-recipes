@@ -3,10 +3,16 @@ import { createStitches } from "@stitches/react";
 import { normalize } from "stitches-normalize-css";
 
 export type Theme = "default" | "colourful";
-
+// #2ec8ee #151718
 export const { createTheme, styled, globalCss } = createStitches({
   theme: {
     colors: {
+      backgroundImage: `
+        repeating-linear-gradient(315deg, #2EC8EE1C 92%, #073AFF00 100%),
+        repeating-radial-gradient(120% 120% at 240% 220%, #2EC8EE1A 30%, #073AFF14 39%),
+        radial-gradient(99% 99% at 109% 2%, #2ec8ee 0%, #073AFF00 100%),
+        radial-gradient(99% 99% at 21% 78%, #25d0ab 0%, #073AFF00 100%),
+        radial-gradient(160% 154% at 711px -303px, #151718 0%, #073AFFFF 100%)`,
       background: slateDark.slate1,
       text: slateDark.slate12,
       componentBackground: slateDark.slate3,
@@ -39,6 +45,7 @@ export const { createTheme, styled, globalCss } = createStitches({
 
 export const colourfulTheme = createTheme("colourful", {
   colors: {
+    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%233e63dd' fill-opacity='0.1'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0l28-28v2L54 40h-2zm4 0l24-24v2L58 40h-2zm4 0l20-20v2L62 40h-2zm4 0l16-16v2L66 40h-2zm4 0l12-12v2L70 40h-2zm4 0l8-8v2l-6 6h-2zm4 0l4-4v2l-2 2h-2z'/%3E%3C/g%3E%3C/svg%3E")`,
     background: amber.amber2,
     text: slateDark.slate1,
     componentBackground: indigo.indigo9,
@@ -56,6 +63,8 @@ export const globalStyles = globalCss(...normalize, {
     padding: "0",
     color: "$text",
     backgroundColor: "$background",
+    backgroundImage: "$backgroundImage",
+    backgroundAttachment: "fixed",
     fontFamily:
       "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif," +
       "Apple Color Emoji, Segoe UI Emoji, system-ui",
