@@ -40,6 +40,7 @@ export const { createTheme, styled, globalCss } = createStitches({
   },
   media: {
     bp1: "(min-width: 640px)",
+    bp2: "(min-width: 800px)",
   },
 });
 

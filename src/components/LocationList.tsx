@@ -40,6 +40,9 @@ const StyledContent = styled(Collapsible.Content, {
   "&[data-state=open]": {
     paddingBottom: "$1",
   },
+  "@bp2": {
+    justifyContent: "space-between",
+  },
 });
 
 const iconLookup: Record<GameLocation, React.FC> = {
