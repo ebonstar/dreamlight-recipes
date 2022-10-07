@@ -1,7 +1,5 @@
-import { Recipe, RECIPES, RECIPE_STARS, RECIPE_TYPE } from "../data/recipes";
-import { ALL_INGREDIENT_DATA, Ingredient } from "../data/ingredients";
-import { GameLocation, GAME_LOCATIONS } from "../data/locations";
 import { useEffect, useState } from "react";
+import { get, set } from "idb-keyval";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -9,12 +7,19 @@ import {
   getFilteredRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { RecipeItem } from "./RecipeItem";
 import { useDebouncyFn } from "use-debouncy";
-import { RecipeSearch } from "./RecipeSearch";
+import { ALL_INGREDIENT_DATA, Ingredient } from "../data/ingredients";
+import { GameLocation, GAME_LOCATIONS } from "../data/locations";
+import { Recipe, RECIPES, RECIPE_STARS, RECIPE_TYPE } from "../data/recipes";
+import { RecipeItem } from "./RecipeItem";
+import { RecipeNameFilter } from "./RecipeNameFilter";
 import { RecipeFilter } from "./RecipeFilter";
 
-const columns: ColumnDef<Recipe, any>[] = [
+export type RecipeRow = Recipe & {
+  known: boolean;
+};
+
+const columns: ColumnDef<RecipeRow, any>[] = [
   { accessorKey: "name" },
   { accessorKey: "type" },
   { accessorKey: "stars", filterFn: "equals" },
@@ -26,10 +31,48 @@ const columns: ColumnDef<Recipe, any>[] = [
       return true;
     },
   },
+  { accessorKey: "known", filterFn: "equals" },
 ];
 
 export function RecipeList({ locations }: { locations: GameLocation[] }) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [data, setData] = useState<RecipeRow[]>(
+    RECIPES.map((recipe) => ({ ...recipe, known: false }))
+  );
+  const [known, setKnown] = useState<string[]>([]);
+
+  // load known recipes list from db on start
+  useEffect(() => {
+    const loadKnownRecipes = async () => {
+      const savedKnownRecipes: string[] | undefined = await get("knownRecipes");
+      if (savedKnownRecipes && savedKnownRecipes.length)
+        setKnown(savedKnownRecipes);
+    };
+    loadKnownRecipes();
+  }, []);
+
+  // update recipe data and save known recipe list with every known change
+  useEffect(() => {
+    setData(
+      [...data].map((recipe) => ({
+        ...recipe,
+        known: known.includes(recipe.name),
+      }))
+    );
+
+    const saveKnownList = async () => {
+      set("knownRecipes", known);
+    };
+    saveKnownList();
+  }, [known]);
+
+  const toggleRecipeKnown = async (name: string) => {
+    const newKnown = known.includes(name)
+      ? known.filter((i) => i !== name)
+      : [...known, name];
+
+    setKnown(newKnown);
+  };
 
   // update available recipes when selected locations change
   useEffect(() => {
@@ -59,8 +102,8 @@ export function RecipeList({ locations }: { locations: GameLocation[] }) {
     handleFilterChange("name", value);
   }, 400);
 
-  const table = useReactTable<Recipe>({
-    data: RECIPES,
+  const table = useReactTable<RecipeRow>({
+    data,
     columns,
     state: {
       columnFilters,
@@ -72,7 +115,7 @@ export function RecipeList({ locations }: { locations: GameLocation[] }) {
 
   return (
     <div>
-      <RecipeSearch handleChange={handleNameFilter} />
+      <RecipeNameFilter handleChange={handleNameFilter} />
       <RecipeFilter
         filterName="Recipe Type"
         filterValues={RECIPE_TYPE}
@@ -84,7 +127,12 @@ export function RecipeList({ locations }: { locations: GameLocation[] }) {
         onFilterChange={(value) => handleFilterChange("stars", value)}
       />
       {table.getRowModel().rows.map((row) => (
-        <RecipeItem key={row.id} id={row.id} recipe={row.original} />
+        <RecipeItem
+          key={row.id}
+          id={row.id}
+          recipe={row.original}
+          toggleKnown={toggleRecipeKnown}
+        />
       ))}
     </div>
   );

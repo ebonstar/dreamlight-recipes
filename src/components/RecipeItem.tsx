@@ -1,6 +1,9 @@
-import { Recipe } from "../data/recipes";
+import * as Checkbox from "@radix-ui/react-checkbox";
+import * as Label from "@radix-ui/react-label";
+import { CheckIcon } from "@radix-ui/react-icons";
 import { styled } from "../stitches.config";
 import { IngredientList } from "./IngredientList";
+import { RecipeRow } from "./RecipeList";
 import { Stars } from "./Stars";
 
 const RecipeGrid = styled("div", {
@@ -45,16 +48,65 @@ const GridArea = styled("div", {
   },
 });
 
-const RecipeName = styled("h3", {
-  margin: "0",
-  fontWeight: "lighter",
+const checkboxSize = {
+  width: 20,
+  height: 20,
+};
+
+const StyledCheckbox = styled(Checkbox.Root, {
+  all: "unset",
+  display: "flex",
+  ...checkboxSize,
+  marginRight: "$2",
+  "&::before": {
+    position: "absolute",
+    ...checkboxSize,
+    content: "",
+    borderRadius: "$2",
+    backgroundColor: "$componentText",
+    opacity: 0.2,
+  },
 });
 
-export function RecipeItem({ id, recipe }: { id: string; recipe: Recipe }) {
+const StyledIndicator = styled(Checkbox.Indicator, {
+  color: "$componentText",
+  "& svg": {
+    ...checkboxSize,
+  },
+});
+
+const RecipeName = styled("h3", {
+  display: "flex",
+  alignItems: "center",
+  margin: "0",
+  fontWeight: "lighter",
+  cursor: "pointer",
+});
+
+export function RecipeItem({
+  id,
+  recipe,
+  toggleKnown,
+}: {
+  id: string;
+  recipe: RecipeRow;
+  toggleKnown: (name: string) => void;
+}) {
   return (
     <RecipeGrid key={id}>
       <GridArea area="name">
-        <RecipeName>{recipe.name}</RecipeName>
+        <RecipeName>
+          <StyledCheckbox
+            id={recipe.name}
+            checked={recipe.known}
+            onCheckedChange={() => toggleKnown(recipe.name)}
+          >
+            <StyledIndicator>
+              <CheckIcon />
+            </StyledIndicator>
+          </StyledCheckbox>
+          <Label.Root htmlFor={recipe.name}>{recipe.name}</Label.Root>
+        </RecipeName>
       </GridArea>
       <GridArea area="stars">
         <Stars number={recipe.stars} />

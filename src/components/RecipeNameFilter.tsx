@@ -17,7 +17,7 @@ const StyledInput = styled("input", {
   },
 });
 
-export function RecipeSearch({
+export function RecipeNameFilter({
   handleChange,
 }: {
   handleChange: (value: string) => void;
