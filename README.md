@@ -16,6 +16,7 @@ Made with:
 - [Radix UI](https://www.radix-ui.com/)
 - [TanStack Table](https://tanstack.com/table/v8)
 - [useHooks](https://usehooks.com/useLocalStorage/)
+- [IDB-Keyval](https://github.com/jakearchibald/idb-keyval)
 - [Stitches](https://stitches.dev/)
 - [Color Gradient](https://colorgradient.dev/)
 - [Hero Patterns](https://heropatterns.com/)
