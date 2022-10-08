@@ -8,11 +8,11 @@ export const { createTheme, styled, globalCss } = createStitches({
   theme: {
     colors: {
       backgroundImage: `
-        repeating-linear-gradient(315deg, #2ec8ee1c 92%, #2ec8ee00 100%),
-        repeating-radial-gradient(80% 80% at 240% 220%, #2ec8ee1c 30%, #2ec8ee05 39%),
-        radial-gradient(99% 99% at 109% 2%, #2ec8ee 0%, #2ec8ee00 100%),
-        radial-gradient(99% 99% at 21% 78%, #9c5bd2 0%, #151718 100%),
-        radial-gradient(160% 154% at 80% -20%, #151718 0%, #25d0ab 100%)`,
+        radial-gradient(50% 80% at 55% 40%, #2ec8eeb0, transparent),
+        radial-gradient(110% 100% at 20% 0%, #151718, transparent),
+        radial-gradient(150% 100% at 80% 0%, #e2ef70, transparent),
+        radial-gradient(150% 100% at 0% 80%, #2ec8ee, transparent),
+        radial-gradient(150% 100% at 100% 80%, #151718, #3772FF)`,
       background: slateDark.slate1,
       text: slateDark.slate12,
       componentBackground: slateDark.slate3,
