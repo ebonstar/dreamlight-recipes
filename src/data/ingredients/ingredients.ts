@@ -124,6 +124,33 @@ export const ALL_INGREDIENTS = [
   ...ICE,
 ] as const;
 
+export const RATATOUILLE_INGREDIENTS: (Ingredient | AnyOfType)[] = [
+  "Bell Pepper",
+  "Cheese",
+  "Egg",
+  "Milk",
+  "Cucumber",
+  "Apple",
+  "Basil",
+  "Corn",
+  "Onion",
+  "Wheat",
+  "Butter",
+  "Oregano",
+  "Rainbow Trout",
+  "Banana",
+  "Eggplant",
+  "Lettuce",
+  "Tomato",
+  "Zucchini",
+  "Any Vegetable",
+  "Any Fruit",
+  "Any Grain",
+  "Any Dairy or Oil",
+  "Any Fish",
+  "Any Spice",
+];
+
 export type IngredientData = {
   location: GameLocation[];
   energy?: number;

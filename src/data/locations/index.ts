@@ -11,3 +11,5 @@ export const GAME_LOCATIONS = [
   "Forgotten Lands",
   "Frosted Heights",
 ] as const;
+
+export const GAME_REALMS = ["Moana", "Ratatouille", "WALL·E", "Frozen"];

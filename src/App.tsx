@@ -1,4 +1,5 @@
 import { Switch, Route } from "wouter";
+import { Ratatouille } from "./components/Ratatouille";
 import { RecipeBook } from "./components/RecipeBook";
 import { globalStyles, styled } from "./stitches.config";
 
@@ -13,6 +14,9 @@ function App() {
   return (
     <Wrapper>
       <Switch>
+        <Route path="/ratatouille">
+          <Ratatouille />
+        </Route>
         <Route>
           <RecipeBook />
         </Route>

@@ -19,7 +19,7 @@ export type RecipeRow = Recipe & {
   known: boolean;
 };
 
-const columns: ColumnDef<RecipeRow, any>[] = [
+export const columns: ColumnDef<RecipeRow, any>[] = [
   { accessorKey: "name" },
   { accessorKey: "type" },
   { accessorKey: "stars", filterFn: "equals" },
