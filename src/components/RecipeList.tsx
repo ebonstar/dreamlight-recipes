@@ -74,6 +74,12 @@ export function RecipeList({ locations }: { locations: GameLocation[] }) {
     setKnown(newKnown);
   };
 
+  const handleFilterChange = <T,>(id: string, value: T | undefined) => {
+    const otherFilters = columnFilters.filter((rule) => rule.id !== id);
+    if (value) setColumnFilters([...otherFilters, { id, value }]);
+    else setColumnFilters(otherFilters);
+  };
+
   // update available recipes when selected locations change
   useEffect(() => {
     const missingIngredients: Ingredient[] = [];
@@ -83,20 +89,8 @@ export function RecipeList({ locations }: { locations: GameLocation[] }) {
           missingIngredients.push(ingredient as Ingredient);
       }
     }
-    const otherFilters = columnFilters.filter(
-      (rule) => rule.id !== "ingredients"
-    );
-    setColumnFilters([
-      ...otherFilters,
-      { id: "ingredients", value: missingIngredients },
-    ]);
+    handleFilterChange("ingredients", missingIngredients);
   }, [locations]);
-
-  const handleFilterChange = <T,>(id: string, value: T | undefined) => {
-    const otherFilters = columnFilters.filter((rule) => rule.id !== id);
-    if (value) setColumnFilters([...otherFilters, { id, value }]);
-    else setColumnFilters(otherFilters);
-  };
 
   const handleNameFilter = useDebouncyFn((value) => {
     handleFilterChange("name", value);
