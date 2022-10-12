@@ -23,7 +23,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "stitches-normalize-css": "^1.2.0",
-    "use-debouncy": "^4.3.0"
+    "use-debouncy": "^4.3.0",
+    "wouter": "^2.8.0-alpha.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

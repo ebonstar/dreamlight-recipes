@@ -33,7 +33,7 @@ const ThemeToggle = styled(ToggleGroup.Item, {
   },
 });
 
-export default function Header({ children }: { children: ReactNode }) {
+export function Header({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useLocalStorage<Theme>("theme", "default");
 
   useEffect(() => {
