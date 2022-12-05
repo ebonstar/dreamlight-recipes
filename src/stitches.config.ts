@@ -7,12 +7,7 @@ export type Theme = "default" | "colourful";
 export const { createTheme, styled, globalCss } = createStitches({
   theme: {
     colors: {
-      backgroundImage: `
-        radial-gradient(50% 80% at 55% 40%, #2ec8eeb0, transparent),
-        radial-gradient(110% 100% at 20% 0%, #151718, transparent),
-        radial-gradient(150% 100% at 80% 0%, #e2ef70, transparent),
-        radial-gradient(150% 100% at 0% 80%, #2ec8ee, transparent),
-        radial-gradient(150% 100% at 100% 80%, #151718, #3772FF)`,
+      backgroundImage: "linear-gradient(-6deg, #2ec8ee, #3d056c)",
       background: slateDark.slate1,
       text: slateDark.slate12,
       componentBackground: slateDark.slate3,
