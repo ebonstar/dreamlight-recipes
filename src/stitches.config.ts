@@ -61,7 +61,7 @@ export const colourfulTheme = createTheme("colourful", {
 export const globalStyles = globalCss(...normalize, {
   body: {
     margin: "0",
-    padding: "0",
+    padding: "$2",
     color: "$text",
     backgroundColor: "$background",
     backgroundImage: "$backgroundImage",
