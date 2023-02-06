@@ -2,7 +2,7 @@
 
 A recipe book for Dreamlight Valley with filtering by recipe name, type and stars.
 
-View the app [here](https://dreamlight-recipes.vercel.app).
+View the app [here](https://ebonstar.github.io/dreamlight-recipes/).
 
 ## Development
 
